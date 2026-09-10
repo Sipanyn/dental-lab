@@ -9,6 +9,9 @@ import { Separator } from "@/components/ui/separator";
 
 export function Header() {
   const { theme, setTheme } = useTheme();
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b bg-background px-4">
       {/* Right side */}
@@ -31,7 +34,8 @@ export function Header() {
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={toggleTheme}
+          className="cursor-pointer"
         >
           <Sun className="size-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
 
@@ -39,12 +43,12 @@ export function Header() {
 
           <span className="sr-only">تغییر حالت روشن و تاریک</span>
         </Button>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" className="cursor-pointer">
           <Bell />
           <span className="sr-only">اعلان‌ها</span>
         </Button>
 
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" className="cursor-pointer">
           <User />
           <span className="sr-only">پروفایل</span>
         </Button>

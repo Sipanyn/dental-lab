@@ -1,22 +1,23 @@
 import AppSidebar from "@/components/layout/app-sidebar";
 import { Header } from "@/components/layout/header";
-
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider>
-      <AppSidebar />
+    <NextThemesProvider attribute="class">
+      <SidebarProvider>
+        <AppSidebar />
 
-      <SidebarInset>
-        <Header />
+        <SidebarInset>
+          <Header />
 
-        <main className="flex-1 p-6">{children}</main>
-      </SidebarInset>
-    </SidebarProvider>
+          <main className="flex-1 p-6">{children}</main>
+        </SidebarInset>
+      </SidebarProvider>
+    </NextThemesProvider>
   );
 }
