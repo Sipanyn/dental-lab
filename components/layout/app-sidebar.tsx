@@ -6,11 +6,11 @@ import {
   ClipboardList,
   UserRound,
   Users,
-  Wrench,
   BarChart3,
   Settings,
   LogOut,
   ChevronLeft,
+  UserRoundGroup,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -30,6 +30,7 @@ import {
   SidebarMenuSubItem,
   SidebarMenuSubButton,
 } from "@/components/ui/sidebar";
+import { Doctor01Icon } from "../icons/hugeicons-doctor-01";
 
 const menuItems = [
   {
@@ -45,7 +46,7 @@ const menuItems = [
   {
     title: "پزشکان",
     url: "/doctors",
-    icon: UserRound,
+    icon: Doctor01Icon,
   },
   {
     title: "بیماران",
@@ -55,7 +56,7 @@ const menuItems = [
   {
     title: "تکنسین‌ها",
     url: "/technicians",
-    icon: Wrench,
+    icon: UserRoundGroup,
   },
   {
     title: "گزارش‌ها",
