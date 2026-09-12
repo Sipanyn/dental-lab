@@ -27,6 +27,7 @@ import { Doctor01Icon } from "@/components/icons/hugeicons-doctor-01";
 import { DentalCrown1Icon } from "@/components/icons/streamline-ultimate-dental-crown-1";
 import { OdontologyImplantOutlineIcon } from "@/components/icons/healthicons-odontology-implant-outline";
 import { DentalIcon } from "@/components/icons/akar-icons-dental";
+import Link from "next/link";
 
 const cases = [
   {
@@ -76,6 +77,18 @@ const cases = [
   },
 ];
 
+function getTypeIcon(typeIcon: string) {
+  switch (typeIcon) {
+    case "crown":
+      return DentalCrown1Icon;
+
+    case "implant":
+      return OdontologyImplantOutlineIcon;
+
+    default:
+      return DentalIcon;
+  }
+}
 function getStatusClass(status: string) {
   switch (status) {
     case "در حال طراحی":
@@ -95,19 +108,6 @@ function getStatusClass(status: string) {
 
     default:
       return "bg-muted text-muted-foreground";
-  }
-}
-
-function getTypeIcon(typeIcon: string) {
-  switch (typeIcon) {
-    case "crown":
-      return DentalCrown1Icon;
-
-    case "implant":
-      return OdontologyImplantOutlineIcon;
-
-    default:
-      return DentalIcon;
   }
 }
 
@@ -226,7 +226,13 @@ export default function CasesPage() {
                 {/* Case ID */}
 
                 <TableCell>
-                  <span className="font-medium">#{item.id}</span>
+                  <Link
+                    href={`/cases/${item.id}`}
+                    className="font-medium text-primary hover:underline"
+                  >
+                    {" "}
+                    #{item.id}
+                  </Link>
                 </TableCell>
 
                 {/* Patient */}
@@ -252,7 +258,7 @@ export default function CasesPage() {
                 {/* Work Type */}
 
                 <TableCell>
-                  <Badge variant="ghost" className="gap-1.5">
+                  <Badge variant="outline" className="gap-1.5">
                     <TypeIcon className="size-4 text-muted-foreground" />
 
                     {item.type}
