@@ -13,12 +13,12 @@ export default function CaseNotFound() {
             <Glasses className="size-6 text-muted-foreground" />
           </div>
 
-          <CardTitle>پزشکی پیدا نشد</CardTitle>
+          <CardTitle>بیمار پیدا نشد</CardTitle>
         </CardHeader>
 
         <CardContent className="space-y-4 text-center">
           <p className="text-sm text-muted-foreground">
-            پزشک موردنظر وجود ندارد یا ممکن است حذف شده باشد.
+            بیمار موردنظر وجود ندارد یا ممکن است حذف شده باشد.
           </p>
 
           <Button variant="outline">
