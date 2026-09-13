@@ -1,6 +1,6 @@
 "use client";
 
-import { MoreHorizontal, UserRound } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { SearchInput } from "@/components/shared/search-input";
@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/table";
 import { Doctor } from "@/data/doctors";
 import { englishToPersianNumber } from "@/lib/utils";
+import { Doctor01Icon } from "../icons/hugeicons-doctor-01";
+import Link from "next/link";
 
 type DoctorsTableProps = {
   doctors: Doctor[];
@@ -95,7 +97,7 @@ export default function DoctorsTable({ doctors }: DoctorsTableProps) {
                   <TableCell>
                     <div className="flex items-center gap-3">
                       <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
-                        <UserRound className="size-4" />
+                        <Doctor01Icon className="size-4 text-muted-foreground" />
                       </div>
 
                       <div>
@@ -130,9 +132,17 @@ export default function DoctorsTable({ doctors }: DoctorsTableProps) {
                   </TableCell>
 
                   <TableCell>
-                    <Button variant="ghost" size="icon" className="size-8">
-                      <MoreHorizontal className="size-4" />
-                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="size-8 cursor-pointer"
+                      nativeButton={false}
+                      render={
+                        <Link href={`/doctors/${doctor.id}`}>
+                          <MoreHorizontal className="size-4" />
+                        </Link>
+                      }
+                    ></Button>
                   </TableCell>
                 </TableRow>
               ))

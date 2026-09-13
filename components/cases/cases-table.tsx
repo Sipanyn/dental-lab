@@ -31,15 +31,7 @@ import { OdontologyImplantOutlineIcon } from "@/components/icons/healthicons-odo
 import { DentalIcon } from "@/components/icons/akar-icons-dental";
 
 import { SearchInput } from "@/components/shared/search-input";
-type Case = {
-  id: string;
-  patient: string;
-  doctor: string;
-  type: string;
-  typeIcon: string;
-  status: string;
-  dueDate: string;
-};
+import { Case } from "@/data/cases";
 
 type CasesTableProps = {
   cases: Case[];
@@ -162,7 +154,6 @@ export default function CasesTable({ cases }: CasesTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>شماره کیس</TableHead>
             <TableHead>بیمار</TableHead>
             <TableHead>پزشک</TableHead>
             <TableHead>نوع کار</TableHead>
@@ -188,16 +179,6 @@ export default function CasesTable({ cases }: CasesTableProps) {
 
               return (
                 <TableRow key={item.id}>
-                  {/* Case ID */}
-                  <TableCell>
-                    <Link
-                      href={`/cases/${item.id}`}
-                      className="font-medium text-primary hover:underline"
-                    >
-                      #{item.id}
-                    </Link>
-                  </TableCell>
-
                   {/* Patient */}
                   <TableCell>
                     <div className="flex items-center gap-2">
@@ -242,9 +223,17 @@ export default function CasesTable({ cases }: CasesTableProps) {
 
                   {/* Actions */}
                   <TableCell>
-                    <Button variant="ghost" size="icon" className="size-8">
-                      <MoreHorizontal className="size-4" />
-                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="size-8"
+                      nativeButton={false}
+                      render={
+                        <Link href={`/cases/${item.id}`}>
+                          <MoreHorizontal className="size-4" />
+                        </Link>
+                      }
+                    ></Button>
                   </TableCell>
                 </TableRow>
               );

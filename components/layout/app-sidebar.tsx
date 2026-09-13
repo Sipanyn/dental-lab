@@ -1,17 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  LayoutDashboard,
-  ClipboardList,
-  UserRound,
-  Users,
-  BarChart3,
-  Settings,
-  LogOut,
-  ChevronLeft,
-  UserRoundGroup,
-} from "lucide-react";
+import { UserRound, LogOut, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -30,58 +20,7 @@ import {
   SidebarMenuSubItem,
   SidebarMenuSubButton,
 } from "@/components/ui/sidebar";
-import { Doctor01Icon } from "../icons/hugeicons-doctor-01";
-
-const menuItems = [
-  {
-    title: "داشبورد",
-    url: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    title: "کیس‌ها",
-    url: "/cases",
-    icon: ClipboardList,
-  },
-  {
-    title: "پزشکان",
-    url: "/doctors",
-    icon: Doctor01Icon,
-  },
-  {
-    title: "بیماران",
-    url: "/patients",
-    icon: Users,
-  },
-  {
-    title: "تکنسین‌ها",
-    url: "/technicians",
-    icon: UserRoundGroup,
-  },
-  {
-    title: "گزارش‌ها",
-    url: "/reports",
-    icon: BarChart3,
-  },
-];
-
-const settingsItems = [
-  {
-    title: "تنظیمات",
-    url: "/settings",
-    icon: Settings,
-    children: [
-      {
-        title: "عمومی",
-        url: "/settings/general",
-      },
-      {
-        title: "تیم",
-        url: "/settings/team",
-      },
-    ],
-  },
-];
+import { menuItems, settingsItems } from "@/data/sidebar";
 
 export default function AppSidebar() {
   const pathname = usePathname();
@@ -144,21 +83,17 @@ export default function AppSidebar() {
                     <SidebarMenuButton
                       isActive={isActive}
                       tooltip={item.title}
-                      className="
-                        h-10
-                        rounded-lg
-                        px-3
-                        text-sm
-                        font-medium
-                        transition-colors
-                        cursor-pointer
-                      "
+                      render={<Link href={item.url} />}
+                      className="h-10
+                                 rounded-lg
+                                 px-3
+                                  text-sm
+                                 font-medium
+                                 transition-colors
+                                 cursor-pointer"
                     >
-                      <Link href={item.url} className="flex items-center gap-3">
-                        <item.icon className="size-4 shrink-0" />
-
-                        <span>{item.title}</span>
-                      </Link>
+                      <item.icon className="size-4 shrink-0" />
+                      <span>{item.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );

@@ -3,9 +3,9 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 
-const notoSansArabic = localFont({
-  src: "/fonts/NotoSansArabic-VariableFont_wdth,wght.ttf",
-  variable: "--font-noto-arabic",
+const Vazirmatn = localFont({
+  src: "/fonts/Vazirmatn-VariableFont_wght.ttf",
+  variable: "--font-Vazirmatn",
 });
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
-      <body className={`min-h-full flex flex-col ${notoSansArabic.className}`}>
+      <body className={`min-h-full flex flex-col ${Vazirmatn.className}`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

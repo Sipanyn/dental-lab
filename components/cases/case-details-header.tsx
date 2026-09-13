@@ -60,10 +60,13 @@ export default function CaseDetailsHeader({
         </div>
       </div>
       {/* Back */}
-      <Button variant="ghost" className="h-8 gap-2 px-2 text-muted-foreground">
+      <Button
+        variant="ghost"
+        className="group h-8 gap-2 px-2 text-muted-foreground"
+      >
         <Link href="/cases" className="flex items-center gap-2">
           بازگشت
-          <ArrowLeft className="size-4" />
+          <ArrowLeft className="size-4 transition-transform duration-200 group-hover:-translate-x-1" />
         </Link>
       </Button>
     </div>
