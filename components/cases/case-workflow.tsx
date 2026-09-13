@@ -7,7 +7,7 @@ import {
   PackageCheck,
 } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 
 type CaseWorkflowProps = {
   status: string;
@@ -120,7 +120,7 @@ export default function CaseWorkflow({ status }: CaseWorkflowProps) {
               {index < workflowSteps.length - 1 && (
                 <div
                   className={`
-                mt-[18px] h-px flex-1
+                mt-4.5 h-px flex-1
                 ${isCompleted ? "bg-primary" : "bg-border"}
               `}
                 />

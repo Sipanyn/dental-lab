@@ -6,6 +6,7 @@ import { doctors } from "@/data/doctors";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Doctor01Icon } from "../icons/hugeicons-doctor-01";
+import { BackButton } from "../shared/back-button";
 
 type Doctor = (typeof doctors)[number];
 
@@ -52,15 +53,7 @@ export default function DoctorDetailsHeader({
         </div>
       </div>
       {/* Back */}
-      <Button
-        variant="ghost"
-        className="group h-8 gap-2 px-2 text-muted-foreground"
-      >
-        <Link href="/doctors" className="flex items-center gap-2">
-          بازگشت
-          <ArrowLeft className="size-4 transition-transform duration-200 group-hover:-translate-x-1" />
-        </Link>
-      </Button>
+      <BackButton />
     </div>
   );
 }

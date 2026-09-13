@@ -10,6 +10,7 @@ import type { Patient } from "@/data/patients";
 
 import { cases } from "@/data/cases";
 import { getPatientStatus } from "@/lib/utils";
+import { BackButton } from "../shared/back-button";
 
 type PatientDetailsHeaderProps = {
   patient: Patient;
@@ -57,17 +58,7 @@ export function PatientDetailsHeader({ patient }: PatientDetailsHeaderProps) {
       </div>
 
       {/* Back */}
-      <Button
-        variant="ghost"
-        className="group h-8 gap-2 px-2 text-muted-foreground"
-        nativeButton={false}
-        render={
-          <Link href="/patients" className="flex items-center gap-2">
-            بازگشت
-            <ArrowLeft className="size-4 transition-transform duration-200 group-hover:-translate-x-1" />
-          </Link>
-        }
-      />
+      <BackButton />
     </div>
   );
 }

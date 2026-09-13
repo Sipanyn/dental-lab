@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   CalendarDays,
   MapPin,
@@ -9,13 +11,20 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import type { Patient } from "@/data/patients";
+import { doctors } from "@/data/doctors";
 import { englishToPersianNumber } from "@/lib/utils";
+import { Doctor01Icon } from "../icons/hugeicons-doctor-01";
+import { DentalIcon } from "../icons/akar-icons-dental";
 
 type PatientInfoProps = {
   patient: Patient;
 };
 
 export function PatientInfo({ patient }: PatientInfoProps) {
+  const doctor = doctors.find(
+    (currentDoctor) => currentDoctor.id === patient.doctorId,
+  );
+
   return (
     <Card className="border-border/60 shadow-none">
       <CardHeader>
@@ -26,29 +35,25 @@ export function PatientInfo({ patient }: PatientInfoProps) {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* Phone */}
           <div className="flex items-start gap-3">
-            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <Phone className="size-4" />
-            </div>
+            <Phone className="mt-0.5 size-4 text-muted-foreground" />
 
             <div>
               <p className="text-xs text-muted-foreground">شماره تماس</p>
 
-              <p className="mt-1 font-medium" dir="ltr">
-                {patient.phone}
+              <p className="mt-1 text-sm font-medium">
+                {englishToPersianNumber(patient.phone)}
               </p>
             </div>
           </div>
 
           {/* Age */}
           <div className="flex items-start gap-3">
-            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <UserRound className="size-4" />
-            </div>
+            <UserRound className="mt-0.5 size-4 text-muted-foreground" />
 
             <div>
               <p className="text-xs text-muted-foreground">سن</p>
 
-              <p className="mt-1 font-medium">
+              <p className="mt-1 text-sm font-medium">
                 {englishToPersianNumber(patient.age)} سال
               </p>
             </div>
@@ -56,40 +61,43 @@ export function PatientInfo({ patient }: PatientInfoProps) {
 
           {/* Gender */}
           <div className="flex items-start gap-3">
-            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <UserRound className="size-4" />
-            </div>
+            <UserRound className="mt-0.5 size-4 text-muted-foreground" />
 
             <div>
               <p className="text-xs text-muted-foreground">جنسیت</p>
 
-              <p className="mt-1 font-medium">{patient.gender}</p>
+              <p className="mt-1 text-sm font-medium">{patient.gender}</p>
             </div>
           </div>
 
           {/* Doctor */}
           <div className="flex items-start gap-3">
-            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <Stethoscope className="size-4" />
-            </div>
+            <Doctor01Icon className="mt-0.5 size-4 text-muted-foreground" />
 
             <div>
               <p className="text-xs text-muted-foreground">پزشک</p>
 
-              <p className="mt-1 font-medium">{patient.doctor}</p>
+              {doctor ? (
+                <Link
+                  href={`/doctors/${doctor.id}`}
+                  className="mt-1 inline-block text-sm font-medium text-primary hover:underline"
+                >
+                  {doctor.name}
+                </Link>
+              ) : (
+                <p className="mt-1 text-sm font-medium">{patient.doctor}</p>
+              )}
             </div>
           </div>
 
           {/* Cases */}
           <div className="flex items-start gap-3">
-            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <CalendarDays className="size-4" />
-            </div>
+            <DentalIcon className="mt-0.5 size-4 text-muted-foreground" />
 
             <div>
               <p className="text-xs text-muted-foreground">تعداد کیس</p>
 
-              <p className="mt-1 font-medium">
+              <p className="mt-1 text-sm font-medium">
                 {englishToPersianNumber(patient.cases)} کیس
               </p>
             </div>
@@ -97,14 +105,12 @@ export function PatientInfo({ patient }: PatientInfoProps) {
 
           {/* Last Case */}
           <div className="flex items-start gap-3">
-            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <CalendarDays className="size-4" />
-            </div>
+            <CalendarDays className="mt-0.5 size-4 text-muted-foreground" />
 
             <div>
               <p className="text-xs text-muted-foreground">آخرین کیس</p>
 
-              <p className="mt-1 font-medium">
+              <p className="mt-1 text-sm font-medium">
                 {englishToPersianNumber(patient.lastCaseDate)}
               </p>
             </div>
@@ -112,14 +118,12 @@ export function PatientInfo({ patient }: PatientInfoProps) {
 
           {/* Created At */}
           <div className="flex items-start gap-3">
-            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <CalendarDays className="size-4" />
-            </div>
+            <CalendarDays className="mt-0.5 size-4 text-muted-foreground" />
 
             <div>
               <p className="text-xs text-muted-foreground">تاریخ ثبت بیمار</p>
 
-              <p className="mt-1 font-medium">
+              <p className="mt-1 text-sm font-medium">
                 {englishToPersianNumber(patient.createdAt)}
               </p>
             </div>
@@ -128,14 +132,12 @@ export function PatientInfo({ patient }: PatientInfoProps) {
           {/* Address */}
           {patient.address && (
             <div className="flex items-start gap-3 sm:col-span-2">
-              <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <MapPin className="size-4" />
-              </div>
+              <MapPin className="mt-0.5 size-4 text-muted-foreground" />
 
               <div>
                 <p className="text-xs text-muted-foreground">آدرس</p>
 
-                <p className="mt-1 font-medium">{patient.address}</p>
+                <p className="mt-1 text-sm font-medium">{patient.address}</p>
               </div>
             </div>
           )}

@@ -21,6 +21,7 @@ import {
   SidebarMenuSubButton,
 } from "@/components/ui/sidebar";
 import { menuItems, settingsItems } from "@/data/sidebar";
+import { DentalIcon } from "../icons/akar-icons-dental";
 
 export default function AppSidebar() {
   const pathname = usePathname();
@@ -45,7 +46,8 @@ export default function AppSidebar() {
         rounded-xl bg-primary text-primary-foreground
         shadow-sm"
           >
-            <span className="text-base font-bold">Y</span>
+            {/* <span className="text-base font-bold">Y</span> */}
+            <DentalIcon className="size-4" />
           </div>
 
           {/* Brand */}
