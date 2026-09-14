@@ -13,7 +13,7 @@ export function Header() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
   return (
-    <header className="flex h-16 shrink-0 items-center justify-between border-b bg-background px-4">
+    <header className="flex h-16 shrink-0 items-center justify-between border-b  px-4 sticky top-0 z-50 bg-background/95 backdrop:backdrop-blur-2xl">
       {/* Right side */}
       <div className="flex items-center gap-3">
         <SidebarTrigger />
