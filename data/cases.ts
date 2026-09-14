@@ -157,17 +157,7 @@ export const cases: Case[] = [
     notes: "فایل‌های ارسال‌شده در حال بررسی هستند.",
     instructions: "فرم و طول ونیرها قبل از شروع طراحی بررسی شود.",
   },
-  {
-    id: "0991",
-    patientId: "P004",
-    doctorId: "D004",
-    patient: "سارا احمدی",
-    type: "Veneer",
-    typeIcon: "dental",
-    status: "تکمیل شده",
-    createdAt: "1404/11/02",
-    dueDate: "1404/11/12",
-  },
+
   {
     id: "0901",
     patientId: "P004",
