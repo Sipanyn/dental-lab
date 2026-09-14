@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import {
   CalendarDays,
+  ExternalLink,
   MapPin,
   Phone,
   Stethoscope,
@@ -76,17 +77,16 @@ export function PatientInfo({ patient }: PatientInfoProps) {
 
             <div>
               <p className="text-xs text-muted-foreground">پزشک</p>
+              <Link
+                href={`/doctors/${patient.doctorId}`}
+                className="group flex w-fit items-center gap-2 text-sm font-medium"
+              >
+                <span className="transition-colors group-hover:text-primary">
+                  {patient.doctor}
+                </span>
 
-              {doctor ? (
-                <Link
-                  href={`/doctors/${doctor.id}`}
-                  className="mt-1 inline-block text-sm font-medium text-primary hover:underline"
-                >
-                  {doctor.name}
-                </Link>
-              ) : (
-                <p className="mt-1 text-sm font-medium">{patient.doctor}</p>
-              )}
+                <ExternalLink className="size-3.5 text-muted-foreground group-hover:text-primary" />
+              </Link>
             </div>
           </div>
 

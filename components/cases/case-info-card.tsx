@@ -1,18 +1,29 @@
-import { CalendarDays, User } from "lucide-react";
+import Link from "next/link";
+
+import { CalendarDays, ClipboardList, ExternalLink, User } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import { Badge } from "@/components/ui/badge";
 
 import { Doctor01Icon } from "@/components/icons/hugeicons-doctor-01";
+
 import { DentalCrown1Icon } from "@/components/icons/streamline-ultimate-dental-crown-1";
+
 import { OdontologyImplantOutlineIcon } from "@/components/icons/healthicons-odontology-implant-outline";
+
 import { DentalIcon } from "@/components/icons/akar-icons-dental";
+import { englishToPersianNumber } from "@/lib/utils";
 
 type CaseInfoCardProps = {
+  caseId: string;
+  patientId: string;
   patient: string;
+  doctorId: string;
   doctor: string;
   type: string;
   status: string;
+  createdAt: string;
   dueDate: string;
 };
 
@@ -54,10 +65,14 @@ function getStatusClass(status: string) {
 }
 
 export default function CaseInfoCard({
+  caseId,
+  patientId,
   patient,
+  doctorId,
   doctor,
   type,
   status,
+  createdAt,
   dueDate,
 }: CaseInfoCardProps) {
   return (
@@ -67,33 +82,59 @@ export default function CaseInfoCard({
       </CardHeader>
 
       <CardContent>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Case ID */}
+          <div className="space-y-2">
+            <p className="text-xs text-muted-foreground">شماره کیس</p>
+
+            <div className="flex items-center gap-2 text-sm font-medium">
+              <ClipboardList className="size-4 text-muted-foreground" />#
+              {caseId}
+            </div>
+          </div>
+
           {/* Patient */}
           <div className="space-y-2">
             <p className="text-xs text-muted-foreground">بیمار</p>
+            <Link
+              href={`/patients/${patientId}`}
+              className="group flex w-fit items-center gap-2 text-sm font-medium"
+            >
+              <Doctor01Icon className="size-4 text-muted-foreground" />
 
-            <div className="flex items-center gap-2 text-sm font-medium">
-              <User className="size-4 text-muted-foreground" />
-              {patient}
-            </div>
+              <span className="transition-colors group-hover:text-primary">
+                {patient}
+              </span>
+
+              <ExternalLink className="size-3.5 text-muted-foreground group-hover:text-primary" />
+            </Link>
           </div>
 
           {/* Doctor */}
           <div className="space-y-2">
             <p className="text-xs text-muted-foreground">پزشک</p>
 
-            <div className="flex items-center gap-2 text-sm font-medium">
+            <Link
+              href={`/doctors/${doctorId}`}
+              className="group flex w-fit items-center gap-2 text-sm font-medium"
+            >
               <Doctor01Icon className="size-4 text-muted-foreground" />
-              {doctor}
-            </div>
+
+              <span className="transition-colors group-hover:text-primary">
+                {doctor}
+              </span>
+
+              <ExternalLink className="size-3.5 text-muted-foreground group-hover:text-primary" />
+            </Link>
           </div>
 
           {/* Work Type */}
           <div className="space-y-2">
             <p className="text-xs text-muted-foreground">نوع کار</p>
 
-            <Badge variant="outline" className="gap-1.5 p-2">
+            <Badge variant="outline" className="w-fit gap-1.5 p-2">
               <TypeIcon type={type} />
+
               {type}
             </Badge>
           </div>
@@ -107,13 +148,25 @@ export default function CaseInfoCard({
             </Badge>
           </div>
 
+          {/* Created Date */}
+          <div className="space-y-2">
+            <p className="text-xs text-muted-foreground">تاریخ ثبت</p>
+
+            <div className="flex items-center gap-2 text-sm font-medium">
+              <CalendarDays className="size-4 text-muted-foreground" />
+
+              {englishToPersianNumber(createdAt)}
+            </div>
+          </div>
+
           {/* Due Date */}
           <div className="space-y-2">
             <p className="text-xs text-muted-foreground">موعد تحویل</p>
 
             <div className="flex items-center gap-2 text-sm font-medium">
               <CalendarDays className="size-4 text-muted-foreground" />
-              {dueDate}
+
+              {englishToPersianNumber(dueDate)}
             </div>
           </div>
         </div>

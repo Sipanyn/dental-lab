@@ -27,6 +27,7 @@ import { OdontologyImplantOutlineIcon } from "@/components/icons/healthicons-odo
 import { DentalIcon } from "@/components/icons/akar-icons-dental";
 
 import type { Case } from "@/data/cases";
+import { englishToPersianNumber } from "@/lib/utils";
 
 type CasesTableProps = {
   cases: Case[];
@@ -176,7 +177,7 @@ export default function CasesTable({ cases }: CasesTableProps) {
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <CalendarDays className="size-4" />
 
-                        <span>{item.dueDate}</span>
+                        <span>{englishToPersianNumber(item.dueDate)}</span>
                       </div>
                     </TableCell>
 

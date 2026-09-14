@@ -32,10 +32,14 @@ export default async function CaseDetailsPage({
       />
 
       <CaseInfoCard
+        caseId={currentCase.id}
+        patientId={currentCase.patientId}
         patient={currentCase.patient}
+        doctorId={currentCase.doctorId}
         doctor={currentCase.doctor}
         type={currentCase.type}
         status={currentCase.status}
+        createdAt={currentCase.createdAt}
         dueDate={currentCase.dueDate}
       />
       <CaseWorkflow status={currentCase.status} />
