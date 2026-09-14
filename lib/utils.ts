@@ -39,3 +39,23 @@ export function getDoctorPatients(doctorId: string, cases: Case[]) {
 
   return Array.from(uniquePatients.values());
 }
+
+//////////////////////////////////
+export function getNextCaseStatus(status: string) {
+  switch (status) {
+    case "در حال بررسی":
+      return "در حال طراحی";
+
+    case "در حال طراحی":
+      return "در حال تولید";
+
+    case "در حال تولید":
+      return "کنترل کیفیت";
+
+    case "کنترل کیفیت":
+      return "تکمیل شده";
+
+    default:
+      return null;
+  }
+}

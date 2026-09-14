@@ -1,5 +1,6 @@
 export type Case = {
   id: string;
+
   patientId: string;
   patient: string;
 
@@ -12,6 +13,9 @@ export type Case = {
 
   createdAt: string;
   dueDate: string;
+
+  notes?: string;
+  instructions?: string;
 };
 
 export const cases: Case[] = [
@@ -29,6 +33,9 @@ export const cases: Case[] = [
     status: "در حال طراحی",
     createdAt: "1405/06/18",
     dueDate: "1405/06/22",
+
+    notes: "رنگ‌گذاری نهایی قبل از ارسال برای پزشک بررسی شود.",
+    instructions: "رنگ ترمیم مطابق نمونه A2 باشد.",
   },
   {
     id: "0985",
@@ -41,6 +48,9 @@ export const cases: Case[] = [
     status: "تکمیل شده",
     createdAt: "1404/09/10",
     dueDate: "1404/09/17",
+
+    notes: "کیس با موفقیت تکمیل و تحویل شد.",
+    instructions: "پونتیک با فرم طبیعی طراحی شود.",
   },
   {
     id: "0912",
@@ -69,6 +79,9 @@ export const cases: Case[] = [
     status: "در حال تولید",
     createdAt: "1405/06/17",
     dueDate: "1405/06/21",
+
+    notes: "قبل از ارسال، تطابق فریم بررسی شود.",
+    instructions: "رنگ نهایی مطابق نمونه ارسالی پزشک باشد.",
   },
   {
     id: "0970",
@@ -109,6 +122,9 @@ export const cases: Case[] = [
     status: "تکمیل شده",
     createdAt: "1405/06/15",
     dueDate: "1405/06/19",
+
+    notes: "کانتور نهایی قبل از تحویل بررسی شد.",
+    instructions: "فرم نهایی مطابق طرح تأییدشده باشد.",
   },
   {
     id: "0954",
@@ -137,13 +153,15 @@ export const cases: Case[] = [
     status: "در حال بررسی",
     createdAt: "1405/06/19",
     dueDate: "1405/06/23",
+
+    notes: "فایل‌های ارسال‌شده در حال بررسی هستند.",
+    instructions: "فرم و طول ونیرها قبل از شروع طراحی بررسی شود.",
   },
   {
     id: "0991",
     patientId: "P004",
     doctorId: "D004",
     patient: "سارا احمدی",
-    doctor: "دکتر کریمی",
     type: "Veneer",
     typeIcon: "dental",
     status: "تکمیل شده",
@@ -177,6 +195,9 @@ export const cases: Case[] = [
     status: "کنترل کیفیت",
     createdAt: "1405/06/16",
     dueDate: "1405/06/20",
+
+    notes: "ترمیم در مرحله کنترل کیفیت نهایی قرار دارد.",
+    instructions: "فیت نهایی و تماس‌های اکلوزالی بررسی شود.",
   },
 
   // ─────────────────────────────────────
